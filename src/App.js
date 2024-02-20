@@ -12,8 +12,19 @@ const App = () => {
 
   const [tasks, setTasks] = useState([]);
 
+
+  const t = {
+    name: "",
+    id: 123,
+    cat: "todo",
+    description: ""
+  }
+
   useEffect(() => {
     const data = JSON.parse(localStorage.getItem('tasks'));
+    if (data === null) {
+      setTasks([...tasks, { ...t }])
+    }
     setTasks(data);
   }, [])
 

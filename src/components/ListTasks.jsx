@@ -12,16 +12,16 @@ const ListTasks = ({ tasks, setTasks }) => {
     const [closed, setClosed] = useState([]);
 
     useEffect(() => {
+        if (tasks !== null) {
+            const fTodos = tasks.filter((task) => task.cat === "todo")
+            const fProgress = tasks.filter((task) => task.cat === "inprogress")
+            const fClosed = tasks.filter((task) => task.cat === "closed")
 
-        const fTodos = tasks.filter((task) => task.cat === "todo")
-        const fProgress = tasks.filter((task) => task.cat === "inprogress")
-        const fClosed = tasks.filter((task) => task.cat === "closed")
 
-
-        setTodos(fTodos)
-        setClosed(fClosed)
-        setProgress(fProgress)
-
+            setTodos(fTodos)
+            setClosed(fClosed)
+            setProgress(fProgress)
+        }
 
     }, [tasks])
     // console.log(todos);
